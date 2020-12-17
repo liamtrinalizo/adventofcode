@@ -76,7 +76,6 @@ int main() {
         sscanf(line, "%s%n", bag_color + offset + 1, &offset);
         line += offset + strlen("bags contain ");
 
-        printf("current bag %s", bag_color);
         struct bag *curr_bag = head_bag.children[bag_index];
 
         while (!feof(input) && sscanf(line, "%d %s%n", &bag_max, bag_color, &offset) == 2) {
@@ -109,31 +108,27 @@ int main() {
 
             curr_bag->children_count++;
             curr_sub_bag->parents_count++;
-
-            printf(" child %s", bag_color);
         }
-        puts("");
         bag_index++;
     }
 
-    int outer_bag_count = 0;
+    int outer_bag_count = -1;
     struct queue *bag_queue = (struct queue *)malloc(sizeof(struct queue));
     bag_queue->data = head_bag.children[shiny_bag_index];
     bag_queue->next = NULL;
     while (bag_queue) {
-        //queue pop
         struct bag * curr_bag = bag_queue->data;
-       // printf("color %s, parents %d", curr_bag->color, curr_bag->parents_count);
+        bag_queue = bag_queue->next;
         outer_bag_count++;
 
+        printf("color %s\n", curr_bag->color, curr_bag->parents_count);
+
         for (int i=0; i < curr_bag->parents_count; i++) {
-            //queue push children
             struct queue *tmp = bag_queue;
             bag_queue = (struct queue *)malloc(sizeof(struct queue));
             bag_queue->data = curr_bag->parents[i];
             bag_queue->next = tmp;
         }
-        bag_queue = bag_queue->next;
     }
     printf("Outer bag count: %d\n", outer_bag_count);
 
