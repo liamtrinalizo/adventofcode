@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 coor_max = 1000
-line_points = []
 floor_map = [[0 for x in range(coor_max)] for y in range(coor_max)]
 
 def print_floor(floor_map):
@@ -31,8 +30,11 @@ with open("input") as file:
                     vent_pos[axis] = p1[axis] # common value
                     vent_pos[diff_axis] = diff_val
                     floor_map[vent_pos[0]][vent_pos[1]] += 1
+        for pos in zip(range(p1[0], p2[0], 1 if p1[0] < p2[0] else -1), range(p1[1], p2[1], 1 if p1[1] < p2[1] else -1)):
+            vent_pos = [pos[0], pos[1]]
+            floor_map[pos[0]][pos[1]] += 1
 
-                floor_map[p2[0]][p2[1]] += 1
+        floor_map[p2[0]][p2[1]] += 1
 
     overlap_cnt = print_floor(floor_map)
     print("Overlap counter", overlap_cnt)
