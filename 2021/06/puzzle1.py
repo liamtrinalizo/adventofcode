@@ -11,5 +11,5 @@ with open("input") as file:
                 fishes[fish_index] = 6
             else:
                 fishes[fish_index] -= 1
-        #print("{:<2}".format(days), fishes)
+
     print("Number of fish:", len(fishes))
