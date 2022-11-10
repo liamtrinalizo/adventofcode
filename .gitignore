@@ -6,3 +6,5 @@ leaderboard
 main1
 main2
 tags
+*.exe
+*.html

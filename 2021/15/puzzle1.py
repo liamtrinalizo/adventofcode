@@ -7,6 +7,7 @@ size = 100
 adjacents = [(-1, 0), (0, -1), (1, 0), (0, 1)]
 
 with open("input") as file:
+    # add 9 on edges of map to block path finder
     inputLines = ["9" * (size+2)]
     for line in file:
         inputLines.append("9" + line.strip() + "9")

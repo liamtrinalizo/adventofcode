@@ -5,7 +5,7 @@
 Here are a couple of command lines I use in my workflow
 However, I use Zsh and sometimes forget what is Bash compatible 😅
 
-If you use them please bear in mind adventofcode creator words:
+If you use them, please bear in mind adventofcode creator's words:
 > Please be careful with automated requests; I'm not a massive company, and I can
 > only take so much traffic.  Please be considerate so that everyone gets to play.
 
@@ -15,7 +15,7 @@ Depends on:
     - GNU sort
     - GNU date
 
-### Retrive todays input file
+### Retrieve today's input file
 Requires `cookie` file containing the session id (usually at the repo root)
 
 ```
