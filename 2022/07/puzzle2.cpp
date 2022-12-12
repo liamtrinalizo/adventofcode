@@ -62,7 +62,7 @@ int main() {
     }
 
     // traverse dirs
-    int tot = 0;
+    int smallest = 0, required = 30000000 - (70000000 - root->size);
     curr = root;
     stack<Dir *> dirs;
     for (auto &d : curr->subDir) {
@@ -72,12 +72,13 @@ int main() {
     while (!dirs.empty()) {
         curr = dirs.top();
         dirs.pop();
-        if (curr->size <= 100000)
-            tot += curr->size;
+        if (curr->size >= required && (!smallest || curr->size < smallest))
+            smallest = curr->size;
+
         for (auto &d : curr->subDir) {
             if (d.first != "..")
                 dirs.push(d.second);
         }
     }
-    cout << "tot size " << tot;
+    cout << "required " << required << " dir size " << smallest;
 }
